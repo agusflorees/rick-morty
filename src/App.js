@@ -1,25 +1,53 @@
-import logo from './logo.svg';
-import './App.css';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+import Episodios from "./components/Episodios";
+import Footer from "./components/Footer";
+import Inicio from "./components/Inicio";
+import Personajes from "./components/Personajes";
+
+
+export default App;
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    <Router>
+      <div className='container mt-3' >
+        <div className='nav tabs justify-content-end shadow p-3 mb-5 bg-white rounded '>
+          <Link to='/inicio' className='btn btn-green fs-4'>
+            Inicio
+          </Link>
+          <Link to='/episodios' className='btn btn-green fs-4'>
+            Episodios
+          </Link>
+          <Link to='/personajes' className='btn btn-green fs-4'>
+            Personajes
+          </Link>
 
-export default App;
+        </div>
+        <hr />
+        <switch>
+          <Route path='/inicio'>
+            <Inicio />
+          </Route>
+          <Route path='/episodios'>
+            <Episodios />
+          </Route>
+          <Route path='/personajes'>
+            <Personajes />
+          </Route>
+          
+        </switch>
+      </div>
+
+        <div>
+          <Footer/>
+        </div>
+    </Router>
+
+
+  )
+}
